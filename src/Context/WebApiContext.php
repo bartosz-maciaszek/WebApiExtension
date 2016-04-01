@@ -44,12 +44,12 @@ class WebApiContext implements ApiClientAwareContext
     /**
      * @var \GuzzleHttp\Message\RequestInterface|RequestInterface
      */
-    private $request;
+    protected $request;
 
     /**
      * @var \GuzzleHttp\Message\ResponseInterface|ResponseInterface
      */
-    private $response;
+    protected $response;
 
     private $placeHolders = array();
 
@@ -311,7 +311,7 @@ class WebApiContext implements ApiClientAwareContext
      *
      * @return string
      */
-    private function prepareUrl($url)
+    protected function prepareUrl($url)
     {
         return ltrim($this->replacePlaceHolder($url), '/');
     }
@@ -387,7 +387,7 @@ class WebApiContext implements ApiClientAwareContext
         }
     }
 
-    private function sendRequest()
+    protected function sendRequest()
     {
         try {
             $this->response = $this->getClient()->send($this->request);
